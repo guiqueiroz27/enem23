@@ -3,99 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Troca de Mapas - Flourish</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #map-container {
-      width: 100vw; /* O mapa usará 100% da largura da tela */
-      height: 100vh; /* O mapa usará 70% da altura da tela */
-      max-width: 1200px; /* Largura máxima para telas muito grandes */
-      max-height: 800px; /* Altura máxima para impedir que fique muito grande */
-      margin: 0 auto;
-    }
-
-    .flourish-embed {
-      width: 100%;
-      height: 100%;
-      display: none; /* Ocultar todos os mapas inicialmente */
-    }
-
-    .flourish-embed.active {
-      display: block; /* Exibir apenas o mapa ativo */
-    }
-  </style>
+  <title>ENEM 2023 e renda</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Escolha o Mapa</h1>
-  <select id="mapSelector">
-    <option value="map1">Nenhuma renda</option>
-    <option value="map2">De R$1.320 a R$3.300</option>
-    <option value="map3">De R$3.300 a R$7.920</option>
-    <option value="map4">De R$7.920 a R$13.200</option>
-    <option value="map5">De R$13.200 a R$26.400</option>
-    <option value="map6">Renda acima de R$26.400</option>
-  </select>
+  <header id="header">
+    <div id="title-box">
+      <h1>ENEM - Uma Análise por Renda</h1>
+    </div>
+    <div id="content-box">
+      <p><b>A edição de 2023 do ENEM teve 3,9 milhões de inscritos.</b></p> 
+      <p id="justify-paragraph">1,2 milhão de estudantes não completaram a prova: ou faltaram aos dois dias ou compareceram apenas a um dia de exame. Analisamos, aqui, a renda desses alunos em cada estado brasileiro. São cinco categorias de renda, que vão dos que declararam não ter nenhuma renda mensal aos que afirmam ter mais de R$26.400 de rendimentos.</p>
+      </div>
+  </header>
+
+  <div id="controls">
+    <label for="mapSelector">Escolha uma faixa de renda:</label>
+    <select id="mapSelector">
+      <option value="map1">Nenhuma renda</option>
+      <option value="map2">De R$1.320 a R$3.300</option>
+      <option value="map3">De R$3.300 a R$7.920</option>
+      <option value="map4">De R$7.920 a R$13.200</option>
+      <option value="map5">De R$13.200 a R$26.400</option>
+      <option value="map6">Renda acima de R$26.400</option>
+    </select>
+  </div>
 
   <div id="map-container">
-    <!-- Mapa 1 -->
-
     <div id="map1" class="flourish-embed flourish-map active" data-src="visualisation/19326204">
         <script src="https://public.flourish.studio/resources/embed.js"></script>
         <noscript><img src="https://public.flourish.studio/visualisation/19326204/thumbnail" width="100%" alt="map visualization" /></noscript>
       </div>
-
-    <!-- Mapa 2 -->
-    <div id="map2" class="flourish-embed flourish-map" data-src="visualisation/19326182">
+  
+      <div id="map2" class="flourish-embed flourish-map" data-src="visualisation/19326182">
         <script src="https://public.flourish.studio/resources/embed.js"></script>
         <noscript><img src="https://public.flourish.studio/visualisation/19326182/thumbnail" width="100%" alt="map visualization" /></noscript>
       </div>
-
-    <!-- Mapa 3 -->
-    <div id="map3" class="flourish-embed flourish-map" data-src="visualisation/19326105">
-      <script src="https://public.flourish.studio/resources/embed.js"></script>
-      <noscript><img src="https://public.flourish.studio/visualisation/19326105/thumbnail" width="100%" alt="map visualization" /></noscript>
-    </div>
-
-    <!-- Mapa 4 -->
-    <div id="map4" class="flourish-embed flourish-map" data-src="visualisation/19326070">
+  
+      <div id="map3" class="flourish-embed flourish-map" data-src="visualisation/19326105">
+        <script src="https://public.flourish.studio/resources/embed.js"></script>
+        <noscript><img src="https://public.flourish.studio/visualisation/19326105/thumbnail" width="100%" alt="map visualization" /></noscript>
+      </div>
+  
+      <div id="map4" class="flourish-embed flourish-map" data-src="visualisation/19326070">
         <script src="https://public.flourish.studio/resources/embed.js"></script>
         <noscript><img src="https://public.flourish.studio/visualisation/19326070/thumbnail" width="100%" alt="map visualization" /></noscript>
-    </div>
-
-    <!-- Mapa 5 -->
-
-    <div id="map5" class="flourish-embed flourish-map" data-src="visualisation/19326054">
+      </div>
+  
+      <div id="map5" class="flourish-embed flourish-map" data-src="visualisation/19326054">
         <script src="https://public.flourish.studio/resources/embed.js"></script>
         <noscript><img src="https://public.flourish.studio/visualisation/19326054/thumbnail" width="100%" alt="map visualization" /></noscript>
-    </div>
-
-    <!-- Mapa 6 -->
-
-    <div id="map6" class="flourish-embed flourish-map active" data-src="visualisation/18921243">
+      </div>
+  
+      <div id="map6" class="flourish-embed flourish-map" data-src="visualisation/18921243">
         <script src="https://public.flourish.studio/resources/embed.js"></script>
         <noscript><img src="https://public.flourish.studio/visualisation/18921243/thumbnail" width="100%" alt="map visualization" /></noscript>
     </div>
-
+  
   </div>
 
   <script>
     const mapSelector = document.getElementById('mapSelector');
     const maps = document.querySelectorAll('.flourish-embed');
 
-    // Adiciona o evento para trocar o mapa
     mapSelector.addEventListener('change', function() {
-      // Ocultar todos os mapas
       maps.forEach(map => map.classList.remove('active'));
-
-      // Exibir o mapa selecionado
       const selectedMap = document.getElementById(this.value);
       selectedMap.classList.add('active');
     });
